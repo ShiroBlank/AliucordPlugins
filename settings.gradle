@@ -1,8 +1,10 @@
 include ':ExamplePlugin'
+include ':EmojiStealer'
+include ':AliuBottom'
 rootProject.name = "plugins"
 
 include ':DiscordStubs'
-project(':DiscordStubs').projectDir = new File('../repo/DiscordStubs')
+project(':DiscordStubs').projectDir = new File('../repo/Aliucord/DiscordStubs')
 
 include ':Aliucord'
-project(':Aliucord').projectDir = new File('../repo/Aliucord')
+project(':Aliucord').projectDir = new File('../repo/Aliucord/Aliucord')
