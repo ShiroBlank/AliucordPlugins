@@ -22,7 +22,7 @@ public class AliuBottom extends Plugin {
     @Override
     public Manifest getManifest() {
         Manifest manifest = new Manifest();
-        manifest.authors = new Manifest.Author[]{ new Manifest.Author("Shiro", 497555706073841671L) };
+        manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "AliuBottom";
         manifest.version = "1.0.0";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/aliucord-plugins/builds/updater.json";
