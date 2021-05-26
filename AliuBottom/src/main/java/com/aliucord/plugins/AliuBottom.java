@@ -49,9 +49,18 @@ public class AliuBottom extends Plugin {
             MessageEmbed embed = new MessageEmbed();
             embed.setTitle("Decoded Bottom");
 
-            embed.setFields(Arrays.asList(
+            try
+            {
+                embed.setFields(Arrays.asList(
                     new Field("Decoded:", Bottom.decode(getIDContent), true)
             ));
+            }
+            catch(Exception e)
+            {
+                embed.setFields(Arrays.asList(
+                        new Field("Decoded:", "Error Decoding", true)
+                ));
+            }
             return new CommandsAPI.CommandResult(null, Collections.singletonList(embed), false);
         });
     }
