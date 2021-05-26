@@ -1,5 +1,3 @@
-include ':ExamplePlugin'
-include ':EmojiStealer'
 include ':AliuBottom'
 rootProject.name = "plugins"
 
