@@ -3,6 +3,10 @@
         "version": "1.1.0",
         "build": "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/%s.zip"
     },
+    "UrlShortener": {
+        "version": "1.0.0",
+        "build": "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/%s.zip"
+    },
     "default": {
         "minimumDiscordVersion": 1456,
         "version": "1.0.0",
