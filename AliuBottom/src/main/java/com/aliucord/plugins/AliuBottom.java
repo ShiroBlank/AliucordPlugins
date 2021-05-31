@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import com.aliucord.Main;
 import com.aliucord.api.CommandsAPI;
 import com.aliucord.entities.MessageEmbed;
-import com.aliucord.entities.MessageEmbed.Field;
 import com.aliucord.entities.Plugin;
 import com.aliucord.plugins.bottom.Bottom;
 import com.discord.stores.StoreStream;
@@ -22,7 +21,7 @@ public class AliuBottom extends Plugin {
         Manifest manifest = new Manifest();
         manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "AliuBottom";
-        manifest.version = "1.1.0";
+        manifest.version = "1.1.1";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/updater.json";
         return manifest;
     }
@@ -43,15 +42,11 @@ public class AliuBottom extends Plugin {
             MessageEmbed embed = new MessageEmbed();
             try
             {
-                embed.setFields(Arrays.asList(
-                        new Field("Decoded:", Bottom.decode(bottomDecoded), true)
-                ));
+                embed.addField("Decoded:", Bottom.decode(bottomDecoded), true);
             }
             catch(Exception e)
             {
-                embed.setFields(Arrays.asList(
-                        new Field("Decoded:", "Error Decoding", true)
-                ));
+                embed.addField("Decoded:", "Error Decoding", true);
             }
             return new CommandsAPI.CommandResult(null, Collections.singletonList(embed), false);
         });
@@ -68,15 +63,11 @@ public class AliuBottom extends Plugin {
             MessageEmbed embed = new MessageEmbed();
             try
             {
-                embed.setFields(Arrays.asList(
-                    new Field("Decoded:", Bottom.decode(getIDContent), true)
-            ));
+                embed.addField("Decoded:", Bottom.decode(getIDContent), true);
             }
             catch(Exception e)
             {
-                embed.setFields(Arrays.asList(
-                        new Field("Decoded:", "Error Decoding", true)
-                ));
+                embed.addField("Decoded:", "Error Decoding", true);
             }
             return new CommandsAPI.CommandResult(null, Collections.singletonList(embed), false);
         });
