@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.aliucord.Main;
 import com.aliucord.api.CommandsAPI;
-import com.aliucord.entities.MessageEmbed;
+import com.aliucord.entities.MessageEmbedBuilder;
 import com.aliucord.entities.Plugin;
 import com.aliucord.plugins.bottom.Bottom;
 import com.discord.stores.StoreStream;
@@ -21,7 +21,7 @@ public class AliuBottom extends Plugin {
         Manifest manifest = new Manifest();
         manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "AliuBottom";
-        manifest.version = "1.1.1";
+        manifest.version = "1.1.2";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/updater.json";
         return manifest;
     }
@@ -39,7 +39,7 @@ public class AliuBottom extends Plugin {
             String msg = (String) args.get("message");
             if (msg == null) return new CommandsAPI.CommandResult(msg);
             String bottomDecoded = (String) msg.trim();
-            MessageEmbed embed = new MessageEmbed();
+            MessageEmbedBuilder embed = new MessageEmbedBuilder();
             try
             {
                 embed.addField("Decoded:", Bottom.decode(bottomDecoded), true);
@@ -48,7 +48,7 @@ public class AliuBottom extends Plugin {
             {
                 embed.addField("Decoded:", "Error Decoding", true);
             }
-            return new CommandsAPI.CommandResult(null, Collections.singletonList(embed), false);
+            return new CommandsAPI.CommandResult(null, Collections.singletonList(embed.build()), false);
         });
 
         commands.registerCommand("bottom decodeid", "Decodes a message via ID from bottom", Collections.singletonList(CommandsAPI.requiredMessageOption), args -> {
@@ -60,7 +60,7 @@ public class AliuBottom extends Plugin {
             } catch (Exception e) {
 
             }
-            MessageEmbed embed = new MessageEmbed();
+            MessageEmbedBuilder embed = new MessageEmbedBuilder();
             try
             {
                 embed.addField("Decoded:", Bottom.decode(getIDContent), true);
@@ -69,7 +69,7 @@ public class AliuBottom extends Plugin {
             {
                 embed.addField("Decoded:", "Error Decoding", true);
             }
-            return new CommandsAPI.CommandResult(null, Collections.singletonList(embed), false);
+            return new CommandsAPI.CommandResult(null, Collections.singletonList(embed.build()), false);
         });
     }
 
