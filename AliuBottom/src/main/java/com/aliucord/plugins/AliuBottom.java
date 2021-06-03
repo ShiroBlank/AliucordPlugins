@@ -21,7 +21,7 @@ public class AliuBottom extends Plugin {
         Manifest manifest = new Manifest();
         manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "AliuBottom";
-        manifest.version = "1.1.2";
+        manifest.version = "1.1.3";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/updater.json";
         return manifest;
     }
