@@ -4,14 +4,10 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.aliucord.Http;
 import com.aliucord.Main;
 import com.aliucord.api.CommandsAPI;
 import com.aliucord.entities.Plugin;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.*;
 
 @SuppressWarnings("unused")
@@ -25,7 +21,7 @@ public class Lmgtfy extends Plugin {
         Manifest manifest = new Manifest();
         manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "Generates a LMGTFY link.";
-        manifest.version = "1.0.0";
+        manifest.version = "1.0.1";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/updater.json";
         return manifest;
     }
@@ -35,13 +31,13 @@ public class Lmgtfy extends Plugin {
         commands.registerCommand("lmgtfy", "Generates a LMGTFY link.", Collections.singletonList(CommandsAPI.requiredMessageOption), args -> {
             String msg = (String) args.get("message");
             if (msg == null) return new CommandsAPI.CommandResult(msg);
-            StringBuilder UrlResult = null;
+            String UrlResult = null;
             try {
-                UrlResult = new StringBuilder(TargetUrl+msg.trim().replace(" ","+"));
+                UrlResult = new Http.QueryBuilder("https://lmgtfy.com").append("q", msg).toString();
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
-            return new CommandsAPI.CommandResult(UrlResult.toString());
+            return new CommandsAPI.CommandResult(UrlResult);
         });
 
     }
