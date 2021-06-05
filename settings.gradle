@@ -1,5 +1,6 @@
 include ':AliuBottom'
 include ':UrlShortener'
+include ':Lmgtfy'
 rootProject.name = "plugins"
 
 include ':DiscordStubs'
