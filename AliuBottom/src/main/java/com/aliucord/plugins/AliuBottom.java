@@ -9,6 +9,7 @@ import com.aliucord.api.CommandsAPI;
 import com.aliucord.entities.MessageEmbedBuilder;
 import com.aliucord.entities.Plugin;
 import com.aliucord.plugins.bottom.Bottom;
+import com.aliucord.wrappers.messages.MessageWrapper;
 import com.discord.stores.StoreStream;
 import java.util.*;
 
@@ -21,7 +22,7 @@ public class AliuBottom extends Plugin {
         Manifest manifest = new Manifest();
         manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "AliuBottom";
-        manifest.version = "1.1.3";
+        manifest.version = "1.1.4";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/updater.json";
         return manifest;
     }
@@ -54,13 +55,14 @@ public class AliuBottom extends Plugin {
         commands.registerCommand("bottom decodeid", "Decodes a message via ID from bottom", Collections.singletonList(CommandsAPI.requiredMessageOption), args -> {
             String msg = (String) args.get("message");
             String getIDContent = null;
+            MessageEmbedBuilder embed = new MessageEmbedBuilder();
             if (msg == null) return new CommandsAPI.CommandResult(msg);
             try {
-                getIDContent = StoreStream.getMessages().getMessage(StoreStream.getChannelsSelected().getId(), Long.parseLong(msg)).getContent();
+                getIDContent = MessageWrapper.getContent(StoreStream.getMessages().getMessage(StoreStream.getChannelsSelected().getId(), Long.parseLong(msg)));
             } catch (Exception e) {
-
+                embed.addField("Decoded:", "Error Decoding", true);
             }
-            MessageEmbedBuilder embed = new MessageEmbedBuilder();
+
             try
             {
                 embed.addField("Decoded:", Bottom.decode(getIDContent), true);
