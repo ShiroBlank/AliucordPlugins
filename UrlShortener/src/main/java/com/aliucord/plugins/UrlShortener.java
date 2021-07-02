@@ -38,7 +38,7 @@ public class UrlShortener extends Plugin {
         Manifest manifest = new Manifest();
         manifest.authors = new Manifest.Author[]{ new Manifest.Author("ShiroUsagi", 497555706073841671L) };
         manifest.description = "Shortens the provided url";
-        manifest.version = "1.0.1";
+        manifest.version = "1.0.2";
         manifest.updateUrl = "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/updater.json";
         return manifest;
     }
@@ -49,12 +49,17 @@ public class UrlShortener extends Plugin {
             String msg = (String) args.get("message");
             if (msg == null) return new CommandsAPI.CommandResult(msg);
             StringBuilder UrlResult = null;
+            boolean error = false;
             try {
                 UrlResult = new StringBuilder(fetch(TargetUrl+msg.trim()));
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
+                error = true;
             }
-            return new CommandsAPI.CommandResult(UrlResult.toString());
+            if(!error){
+                return new CommandsAPI.CommandResult(UrlResult.toString());
+            }
+            return new CommandsAPI.CommandResult("Error fetching shortened url",null,false);
         });
 
     }

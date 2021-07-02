@@ -4,7 +4,7 @@
         "build": "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/%s.zip"
     },
     "UrlShortener": {
-        "version": "1.0.1",
+        "version": "1.0.2",
         "build": "https://raw.githubusercontent.com/ShiroBlank/AliucordPlugins/builds/%s.zip"
     },
     "Lmgtfy": {
